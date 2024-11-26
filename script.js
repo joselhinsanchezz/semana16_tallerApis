@@ -7,7 +7,7 @@ async function fetchCharacters() {
     const data = await response.json();
     displayCharacters(data.results);
   } catch (error) {
-    document.getElementById("characters").innerHTML = `<p>Error: ${error.message}</p>`;
+    document.getElementById("characters").innerHTML = `<p class="text-danger">Error: ${error.message}</p>`;
   }
 }
 
@@ -15,15 +15,19 @@ function displayCharacters(characters) {
   const container = document.getElementById("characters");
   container.innerHTML = ""; // Clear existing content
   characters.forEach(character => {
-    const card = document.createElement("div");
-    card.className = "character-card";
-    card.innerHTML = `
-      <img src="${character.image}" alt="${character.name}">
-      <h3>${character.name}</h3>
-      <p>Status: ${character.status}</p>
-      <p>Species: ${character.species}</p>
+    const card = `
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm">
+          <img src="${character.image}" class="card-img-top" alt="${character.name}">
+          <div class="card-body">
+            <h5 class="card-title">${character.name}</h5>
+            <p class="card-text">Status: ${character.status}</p>
+            <p class="card-text">Species: ${character.species}</p>
+          </div>
+        </div>
+      </div>
     `;
-    container.appendChild(card);
+    container.innerHTML += card;
   });
 }
 
