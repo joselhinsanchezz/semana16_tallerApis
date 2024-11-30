@@ -20,7 +20,7 @@ h1 {
 }
 
 .character-card {
-  background: black;
+  background: #fff;
   border: 1px solid #ccc;
   border-radius: 8px;
   margin: 10px;
